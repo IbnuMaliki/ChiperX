@@ -1,0 +1,336 @@
+{% extends "base.html" %}
+{% block title %}Tentang Kriptografi — CipherX{% endblock %}
+{% block content %}
+<div class="edu-page">
+
+  <!-- HERO -->
+  <div class="edu-hero">
+    <div class="edu-hero-inner">
+      <div class="edu-badge">PUSAT BELAJAR</div>
+      <h1 class="edu-title">Tentang Kriptografi</h1>
+      <p class="edu-subtitle">Panduan lengkap memahami kriptografi dari nol — cocok untuk semua kalangan, tidak perlu latar belakang IT.</p>
+      <div class="edu-progress-bar">
+        <span class="edu-progress-label">Progres Baca</span>
+        <div class="edu-progress-track"><div class="edu-progress-fill" id="readProgress"></div></div>
+        <span class="edu-progress-pct" id="readPct">0%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOC -->
+  <div class="edu-toc-wrap">
+    <div class="edu-toc">
+      <div class="edu-toc-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><rect x="9" y="2" width="6" height="4" rx="1"/><path d="M9 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-2"/><line x1="9" y1="9" x2="15" y2="9"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="13" y2="17"/></svg> Daftar Materi</div>
+      <a href="#apa-itu" class="edu-toc-link">1. Apa itu Kriptografi?</a>
+      <a href="#kenapa-penting" class="edu-toc-link">2. Kenapa Kriptografi Penting?</a>
+      <a href="#istilah" class="edu-toc-link">3. Istilah Dasar</a>
+      <a href="#caesar" class="edu-toc-link">4. Caesar Cipher</a>
+      <a href="#vigenere" class="edu-toc-link">5. Vigenère Cipher</a>
+      <a href="#columnar" class="edu-toc-link">6. Columnar Transposition</a>
+      <a href="#perbandingan" class="edu-toc-link">7. Perbandingan Algoritma</a>
+      <a href="#quiz" class="edu-toc-link">8. <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg> Quiz — Uji Pemahamanmu!</a>
+    </div>
+  </div>
+
+  <div class="edu-content">
+
+    <!-- SECTION 1 -->
+    <section class="edu-section" id="apa-itu">
+      <div class="edu-section-num">01</div>
+      <h2 class="edu-section-title">Apa itu Kriptografi?</h2>
+      <div class="edu-section-body">
+        <p>Kriptografi berasal dari bahasa Yunani: <strong>kryptos</strong> (tersembunyi) dan <strong>graphein</strong> (menulis). Secara sederhana, kriptografi adalah <strong class="edu-hl-green">ilmu menyembunyikan pesan</strong> agar hanya orang yang berhak yang bisa membacanya.</p>
+        <div class="edu-analogi">
+          <div class="edu-analogi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 1 7 7c0 2.5-1.3 4.7-3.3 6L15 17H9l-.7-2C6.3 13.7 5 11.5 5 9a7 7 0 0 1 7-7z"/></svg></div>
+          <div>
+            <div class="edu-analogi-title">Analogi Sederhana</div>
+            <p>Bayangkan kamu menulis surat rahasia untuk sahabatmu, tapi takut ada yang membaca di jalan. Kamu dan sahabatmu sepakat: setiap huruf A ditulis sebagai D, B ditulis sebagai E, dan seterusnya. Inilah kriptografi — mengubah pesan asli menjadi bentuk yang tidak bisa dibaca orang lain!</p>
+          </div>
+        </div>
+        <p>Proses mengubah pesan asli menjadi kode disebut <strong class="edu-hl-green">enkripsi</strong>, sedangkan proses mengubah kode kembali menjadi pesan asli disebut <strong class="edu-hl-cyan">dekripsi</strong>.</p>
+      </div>
+    </section>
+
+    <!-- SECTION 2 -->
+    <section class="edu-section" id="kenapa-penting">
+      <div class="edu-section-num">02</div>
+      <h2 class="edu-section-title">Kenapa Kriptografi Penting?</h2>
+      <div class="edu-section-body">
+        <p>Setiap hari kamu menggunakan kriptografi tanpa sadar! Saat membuka WhatsApp, berbelanja online, atau login ke media sosial — semua itu menggunakan kriptografi untuk melindungi datamu.</p>
+        <div class="edu-card-grid">
+          <div class="edu-use-card"><div class="edu-use-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><div class="edu-use-title">Chat & Pesan</div><p>WhatsApp, Telegram menggunakan enkripsi agar pesan hanya terbaca oleh pengirim dan penerima.</p></div>
+          <div class="edu-use-card"><div class="edu-use-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></div><div class="edu-use-title">Belanja Online</div><p>Data kartu kreditmu dienkripsi saat transaksi agar tidak bisa dicuri peretas.</p></div>
+          <div class="edu-use-card"><div class="edu-use-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><circle cx="7.5" cy="15.5" r="5.5"/><path d="M21 2l-9.6 9.6M15.5 7.5l3 3M20 7l1-1"/></svg></div><div class="edu-use-title">Password</div><p>Password yang kamu simpan di website tidak disimpan apa adanya — melainkan dalam bentuk terenkripsi.</p></div>
+          <div class="edu-use-card"><div class="edu-use-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><line x1="3" y1="22" x2="21" y2="22"/><line x1="6" y1="18" x2="6" y2="11"/><line x1="10" y1="18" x2="10" y2="11"/><line x1="14" y1="18" x2="14" y2="11"/><line x1="18" y1="18" x2="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg></div><div class="edu-use-title">Perbankan</div><p>Semua transaksi internet banking dilindungi oleh lapisan enkripsi yang sangat kuat.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3 -->
+    <section class="edu-section" id="istilah">
+      <div class="edu-section-num">03</div>
+      <h2 class="edu-section-title">Istilah Dasar yang Perlu Kamu Tahu</h2>
+      <div class="edu-section-body">
+        <div class="edu-term-list">
+          <div class="edu-term"><div class="edu-term-word">Plaintext</div><div class="edu-term-def">Pesan asli yang belum dienkripsi. Contoh: <code>HELLO</code></div></div>
+          <div class="edu-term"><div class="edu-term-word">Ciphertext</div><div class="edu-term-def">Pesan setelah dienkripsi — sudah tidak bisa dibaca tanpa kunci. Contoh: <code>KHOOR</code></div></div>
+          <div class="edu-term"><div class="edu-term-word">Key (Kunci)</div><div class="edu-term-def">Angka atau kata yang dipakai untuk enkripsi dan dekripsi. Tanpa kunci yang benar, pesan tidak bisa dibuka. Contoh: angka <code>3</code> atau kata <code>SECRET</code></div></div>
+          <div class="edu-term"><div class="edu-term-word">Enkripsi</div><div class="edu-term-def">Proses mengubah plaintext menjadi ciphertext menggunakan kunci tertentu.</div></div>
+          <div class="edu-term"><div class="edu-term-word">Dekripsi</div><div class="edu-term-def">Proses kebalikannya — mengubah ciphertext menjadi plaintext menggunakan kunci yang sama.</div></div>
+          <div class="edu-term"><div class="edu-term-word">Algoritma</div><div class="edu-term-def">Metode yang digunakan untuk mengenkripsi. Di aplikasi ini ada 3: Caesar, Vigenère, dan Columnar Transposition.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4 — CAESAR -->
+    <section class="edu-section" id="caesar">
+      <div class="edu-section-num">04</div>
+      <h2 class="edu-section-title">Caesar Cipher</h2>
+      <div class="edu-section-body">
+        <div class="edu-algo-badge caesar">PALING MUDAH</div>
+
+        <!-- Tab navigator -->
+        <div class="algo-tabs" id="tabs-caesar">
+          <button class="algo-tab active" data-tab="penjelasan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> Penjelasan</button>
+          <button class="algo-tab" data-tab="cara-kerja"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="10" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="14" y2="21"/></svg> Cara Kerja</button>
+          <button class="algo-tab" data-tab="simulasi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> Simulasi</button>
+        </div>
+
+        <!-- Tab: Penjelasan -->
+        <div class="algo-tab-panel active" id="caesar-penjelasan">
+          <p>Caesar Cipher adalah cara enkripsi paling tua dan paling sederhana. Nama ini diambil dari <strong>Julius Caesar</strong>, kaisar Romawi yang menggunakannya sekitar tahun 58 SM untuk mengirim pesan rahasia ke pasukan militernya.</p>
+          <p style="margin-top:.75rem">Caranya sangat simpel: <strong>geser setiap huruf sejumlah langkah ke kanan</strong> di abjad. Jika kuncinya 3, maka A jadi D, B jadi E, C jadi F, dan seterusnya. Jika sudah melewati Z, putaran balik ke A.</p>
+          <div class="edu-poin">
+            <div class="edu-poin-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" style="color:var(--accent-green,#4ade80)"><polyline points="20 6 9 17 4 12"/></svg> Sangat mudah dipahami dan dicoba</div>
+            <div class="edu-poin-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" style="color:var(--accent-green,#4ade80)"><polyline points="20 6 9 17 4 12"/></svg> Cocok untuk belajar dasar kriptografi</div>
+            <div class="edu-poin-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" style="color:var(--accent-yellow,#facc15)"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Keamanannya rendah — hanya ada 25 kemungkinan kunci, mudah ditebak</div>
+          </div>
+          <div class="edu-kv-grid" style="margin-top:1rem">
+            <div class="edu-kv-item"><div class="edu-kv-label">TIPE</div><div class="edu-kv-val">Substitusi Monoalfabetik</div></div>
+            <div class="edu-kv-item"><div class="edu-kv-label">KEY</div><div class="edu-kv-val">Satu angka (1–25)</div></div>
+            <div class="edu-kv-item"><div class="edu-kv-label">KEAMANAN</div><div class="edu-kv-val">Rendah</div></div>
+            <div class="edu-kv-item"><div class="edu-kv-label">CONTOH</div><div class="edu-kv-val">HELLO + 3 = KHOOR</div></div>
+          </div>
+        </div>
+
+        <!-- Tab: Cara Kerja -->
+        <div class="algo-tab-panel" id="caesar-cara-kerja">
+          <div class="step-list">
+            <div class="step-item"><div class="step-num">1</div><div><div class="step-title">TENTUKAN ANGKA KUNCI</div><div class="step-desc">Pilih angka antara 1–25. Angka ini menentukan seberapa jauh setiap huruf akan digeser. Pengirim dan penerima harus tahu angka yang sama.</div><div class="step-example">Angka kunci = 3</div></div></div>
+            <div class="step-item"><div class="step-num">2</div><div><div class="step-title">GESER SETIAP HURUF</div><div class="step-desc">Ambil setiap huruf dalam pesan, lalu geser maju di abjad sebanyak angka kunci. Huruf Z akan berputar balik ke A jika sudah melebihi batas.</div><div class="step-example">H geser 3 = K,  E geser 3 = H,  L geser 3 = O</div></div></div>
+            <div class="step-item"><div class="step-num">3</div><div><div class="step-title">BIARKAN KARAKTER LAIN</div><div class="step-desc">Spasi, angka, dan tanda baca tidak ikut digeser. Hanya huruf A–Z yang berubah.</div><div class="step-example">"HELLO WORLD" menjadi "KHOOR ZRUOG"</div></div></div>
+            <div class="step-item"><div class="step-num">4</div><div><div class="step-title">GABUNGKAN HASILNYA</div><div class="step-desc">Kumpulkan semua huruf yang sudah digeser — itulah ciphertext yang siap dikirim.</div><div class="step-example">HELLO + key 3 = KHOOR</div></div></div>
+            <div class="step-item"><div class="step-num">5</div><div><div class="step-title">CARA MEMBACA KEMBALI</div><div class="step-desc">Penerima cukup geser setiap huruf ke arah sebaliknya sebanyak angka kunci yang sama.</div><div class="step-example">KHOOR geser balik 3 = HELLO</div></div></div>
+          </div>
+        </div>
+
+        <!-- Tab: Simulasi -->
+        <div class="algo-tab-panel" id="caesar-simulasi">
+          <div class="edu-visual-caesar">
+            <div class="edu-visual-title">Coba sendiri — ubah kunci dan teks!</div>
+            <div class="edu-caesar-controls">
+              <label class="edu-ctrl-label">Teks:</label>
+              <input type="text" id="caesarInput" value="HELLO" maxlength="12" class="edu-ctrl-input" style="text-transform:uppercase;width:130px" />
+              <label class="edu-ctrl-label">Kunci:</label>
+              <input type="number" id="caesarKey" min="1" max="25" value="3" class="edu-ctrl-input" />
+              <button onclick="updateCaesar()" class="edu-ctrl-btn">Enkripsi!</button>
+            </div>
+            <div id="caesarDemo" style="display:flex;flex-wrap:wrap;gap:.45rem;margin:1rem 0"></div>
+            <div class="edu-caesar-result" id="caesarResult"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5 — VIGENERE -->
+    <section class="edu-section" id="vigenere">
+      <div class="edu-section-num">05</div>
+      <h2 class="edu-section-title">Vigenère Cipher</h2>
+      <div class="edu-section-body">
+        <div class="edu-algo-badge vigenere">TINGKAT MENENGAH</div>
+
+        <div class="algo-tabs" id="tabs-vigenere">
+          <button class="algo-tab active" data-tab="penjelasan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> Penjelasan</button>
+          <button class="algo-tab" data-tab="cara-kerja"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="10" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="14" y2="21"/></svg> Cara Kerja</button>
+          <button class="algo-tab" data-tab="simulasi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> Simulasi</button>
+        </div>
+
+        <div class="algo-tab-panel active" id="vigenere-penjelasan">
+          <p>Vigenère Cipher adalah <strong>versi lebih canggih dari Caesar</strong>. Bedanya, kamu tidak menggunakan satu angka — melainkan <strong>sebuah kata kunci</strong> di mana setiap hurufnya memberikan angka geser yang berbeda-beda.</p>
+          <div class="edu-analogi">
+            <div class="edu-analogi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 1 7 7c0 2.5-1.3 4.7-3.3 6L15 17H9l-.7-2C6.3 13.7 5 11.5 5 9a7 7 0 0 1 7-7z"/></svg></div>
+            <div>
+              <div class="edu-analogi-title">Mengapa lebih aman?</div>
+              <p>Karena huruf yang sama di pesan asli bisa menghasilkan huruf yang berbeda di kode — tergantung posisinya. Misalnya dua huruf L di HELLO menghasilkan J dan V yang berbeda.</p>
+            </div>
+          </div>
+          <p style="margin-top:.75rem">Setiap huruf kata kunci punya nilai geser sesuai posisinya di abjad: A=geser 0, B=geser 1, ..., Z=geser 25. Kata kunci diulang sepanjang pesan.</p>
+          <div class="edu-poin">
+            <div class="edu-poin-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" style="color:var(--accent-green,#4ade80)"><polyline points="20 6 9 17 4 12"/></svg> Lebih aman dari Caesar</div>
+            <div class="edu-poin-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" style="color:var(--accent-green,#4ade80)"><polyline points="20 6 9 17 4 12"/></svg> Kunci berupa kata yang mudah diingat</div>
+            <div class="edu-poin-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" style="color:var(--accent-yellow,#facc15)"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Bisa dipecahkan jika kata kuncinya terlalu pendek</div>
+          </div>
+          <div class="edu-kv-grid" style="margin-top:1rem">
+            <div class="edu-kv-item"><div class="edu-kv-label">TIPE</div><div class="edu-kv-val">Substitusi Polialfabetik</div></div>
+            <div class="edu-kv-item"><div class="edu-kv-label">KEY</div><div class="edu-kv-val">Kata/frasa huruf (A-Z)</div></div>
+            <div class="edu-kv-item"><div class="edu-kv-label">KEAMANAN</div><div class="edu-kv-val">Sedang - Tinggi</div></div>
+            <div class="edu-kv-item"><div class="edu-kv-label">CONTOH</div><div class="edu-kv-val">HELLO + KEY = RIJVS</div></div>
+          </div>
+        </div>
+
+        <div class="algo-tab-panel" id="vigenere-cara-kerja">
+          <div class="step-list">
+            <div class="step-item"><div class="step-num">1</div><div><div class="step-title">TULIS KATA KUNCI BERULANG</div><div class="step-desc">Tuliskan kata kunci di bawah setiap huruf pesan. Jika kata kunci habis, ulangi dari awal lagi. Spasi dan tanda baca dilewati.</div><div class="step-example">Pesan: H E L L O  &rarr;  Kunci: K E Y K E</div></div></div>
+            <div class="step-item"><div class="step-num">2</div><div><div class="step-title">CARI NILAI GESER TIAP HURUF KUNCI</div><div class="step-desc">Setiap huruf kunci punya nilai geser sesuai posisinya di abjad. A=0, B=1, ..., Z=25.</div><div class="step-example">K=10, E=4, Y=24, K=10, E=4</div></div></div>
+            <div class="step-item"><div class="step-num">3</div><div><div class="step-title">GESER HURUF PESAN</div><div class="step-desc">Geser setiap huruf pesan sebanyak nilai kunci yang berpasangan. Jika melewati Z, putaran kembali ke A.</div><div class="step-example">H geser 10 = R &nbsp;|&nbsp; E geser 4 = I &nbsp;|&nbsp; L geser 24 = J</div></div></div>
+            <div class="step-item"><div class="step-num">4</div><div><div class="step-title">GABUNGKAN HASILNYA</div><div class="step-desc">Kumpulkan semua huruf hasil geseran menjadi satu. Itulah ciphertext.</div><div class="step-example">HELLO + KEY = RIJVS</div></div></div>
+            <div class="step-item"><div class="step-num">5</div><div><div class="step-title">CARA MEMBACA KEMBALI</div><div class="step-desc">Gunakan kata kunci yang sama lalu geser setiap huruf ciphertext ke arah mundur sesuai nilai kuncinya.</div><div class="step-example">R mundur 10 (K) = H &nbsp;|&nbsp; I mundur 4 (E) = E</div></div></div>
+          </div>
+        </div>
+
+        <div class="algo-tab-panel" id="vigenere-simulasi">
+          <div class="edu-vig-table-wrap">
+            <div class="edu-visual-title">Coba sendiri — ubah teks dan kata kunci!</div>
+            <div class="edu-caesar-controls">
+              <label class="edu-ctrl-label">Teks:</label>
+              <input type="text" id="vigInput" value="HELLO" maxlength="10" class="edu-ctrl-input" style="text-transform:uppercase;width:130px"/>
+              <label class="edu-ctrl-label">Kunci:</label>
+              <input type="text" id="vigKey" value="KEY" maxlength="10" class="edu-ctrl-input" style="text-transform:uppercase;width:100px"/>
+              <button onclick="updateVigenere()" class="edu-ctrl-btn">Enkripsi!</button>
+            </div>
+            <div id="vigPairsNav" style="margin:.75rem 0"></div>
+            <div id="vigInfoCard" style="font-size:.78rem;background:var(--primary3);border:1px solid var(--primary2);border-radius:8px;padding:.55rem .9rem;margin-bottom:.55rem;display:none"></div>
+            <div style="overflow:auto;max-height:300px;border:1.5px solid var(--border);border-radius:8px">
+              <table id="vigTable" style="border-collapse:collapse;font-family:var(--font-mono);font-size:.62rem;"></table>
+            </div>
+            <div id="vigLegend" style="display:flex;gap:.85rem;flex-wrap:wrap;margin-top:.45rem;font-size:.62rem;color:var(--text4)">
+              <span><span style="display:inline-block;width:10px;height:10px;background:var(--primary3);border:1.5px solid var(--primary2);margin-right:.3rem;border-radius:2px"></span>Hasil (cipher)</span>
+              <span><span style="display:inline-block;width:10px;height:10px;background:var(--cyan2);border:1.5px solid var(--cyan);margin-right:.3rem;border-radius:2px"></span>Kolom plaintext</span>
+              <span><span style="display:inline-block;width:10px;height:10px;background:var(--accent2);border:1.5px solid var(--amber);margin-right:.3rem;border-radius:2px"></span>Baris kunci</span>
+            </div>
+            <div class="edu-caesar-result" id="vigResult" style="margin-top:.75rem"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6 — COLUMNAR -->
+    <section class="edu-section" id="columnar">
+      <div class="edu-section-num">06</div>
+      <h2 class="edu-section-title">Columnar Transposition Cipher</h2>
+      <div class="edu-section-body">
+        <div class="edu-algo-badge columnar">TINGKAT MENENGAH</div>
+
+        <div class="algo-tabs" id="tabs-columnar">
+          <button class="algo-tab active" data-tab="penjelasan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> Penjelasan</button>
+          <button class="algo-tab" data-tab="cara-kerja"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="10" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="14" y2="21"/></svg> Cara Kerja</button>
+          <button class="algo-tab" data-tab="simulasi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> Simulasi</button>
+        </div>
+
+        <div class="algo-tab-panel active" id="columnar-penjelasan">
+          <p>Columnar Transposition bekerja dengan cara berbeda. Di sini <strong>hurufnya tidak diubah sama sekali</strong> — yang berubah adalah <strong>urutan posisinya</strong>. Pesan diacak dengan dituliskan ke dalam kotak (grid), lalu dibaca ulang dengan urutan kolom tertentu.</p>
+          <div class="edu-analogi">
+            <div class="edu-analogi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 1 7 7c0 2.5-1.3 4.7-3.3 6L15 17H9l-.7-2C6.3 13.7 5 11.5 5 9a7 7 0 0 1 7-7z"/></svg></div>
+            <div>
+              <div class="edu-analogi-title">Analoginya seperti ini</div>
+              <p>Tulis pesan ke kertas kotak-kotak baris per baris. Lebar kotak = jumlah huruf kunci. Lalu baca bukan dari kiri ke kanan, tapi dari kolom-kolom tertentu berdasarkan urutan abjad kata kunci.</p>
+            </div>
+          </div>
+          <div class="edu-poin">
+            <div class="edu-poin-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" style="color:var(--accent-green,#4ade80)"><polyline points="20 6 9 17 4 12"/></svg> Semua huruf asli tetap ada, hanya posisinya berubah</div>
+            <div class="edu-poin-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" style="color:var(--accent-green,#4ade80)"><polyline points="20 6 9 17 4 12"/></svg> Sering dikombinasikan dengan cipher lain untuk keamanan lebih tinggi</div>
+            <div class="edu-poin-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" style="color:var(--accent-yellow,#facc15)"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Huruf yang digunakan tetap sama sehingga bisa dianalisis frekuensinya</div>
+          </div>
+          <div class="edu-kv-grid" style="margin-top:1rem">
+            <div class="edu-kv-item"><div class="edu-kv-label">TIPE</div><div class="edu-kv-val">Transposisi</div></div>
+            <div class="edu-kv-item"><div class="edu-kv-label">KEY</div><div class="edu-kv-val">Kata/frasa huruf</div></div>
+            <div class="edu-kv-item"><div class="edu-kv-label">KEAMANAN</div><div class="edu-kv-val">Sedang</div></div>
+            <div class="edu-kv-item"><div class="edu-kv-label">CONTOH</div><div class="edu-kv-val">ATTACK + KEY = TCAATK</div></div>
+          </div>
+        </div>
+
+        <div class="algo-tab-panel" id="columnar-cara-kerja">
+          <div class="step-list">
+            <div class="step-item"><div class="step-num">1</div><div><div class="step-title">TULIS PESAN KE DALAM KOTAK</div><div class="step-desc">Tuliskan pesan baris per baris ke dalam kotak. Lebar kotak = jumlah huruf kata kunci. Jika baris terakhir tidak penuh, isi sisa dengan huruf X.</div><div class="step-example">ATTACK + Key: KEY (3 kolom) &rarr; baris1: ATT | baris2: ACK</div></div></div>
+            <div class="step-item"><div class="step-num">2</div><div><div class="step-title">URUTKAN KOLOM BERDASARKAN ABJAD</div><div class="step-desc">Lihat kata kunci, urutkan huruf-hurufnya secara abjad. Urutan ini menentukan kolom mana yang dibaca pertama, kedua, dan seterusnya.</div><div class="step-example">KEY &rarr; E di abjad paling awal (col1), lalu K (col0), lalu Y (col2)</div></div></div>
+            <div class="step-item"><div class="step-num">3</div><div><div class="step-title">BACA KOLOM SESUAI URUTAN</div><div class="step-desc">Baca isi kotak kolom per kolom sesuai urutan abjad. Bukan dari kiri ke kanan biasa.</div><div class="step-example">Baca col1 (E): T,C &rarr; lalu col0 (K): A,A &rarr; lalu col2 (Y): T,K</div></div></div>
+            <div class="step-item"><div class="step-num">4</div><div><div class="step-title">GABUNGKAN HASILNYA</div><div class="step-desc">Sambungkan semua huruf yang sudah dibaca menjadi satu rangkaian. Itulah ciphertext.</div><div class="step-example">ATTACK + KEY = TCAATK</div></div></div>
+            <div class="step-item"><div class="step-num">5</div><div><div class="step-title">CARA MEMBACA KEMBALI</div><div class="step-desc">Hitung panjang tiap kolom, isi kolom sesuai urutan kunci, lalu baca grid dari kiri ke kanan baris per baris.</div><div class="step-example">Isi kolom per urutan kunci &rarr; baca baris &rarr; ATTACK</div></div></div>
+          </div>
+        </div>
+
+        <div class="algo-tab-panel" id="columnar-simulasi">
+          <div class="edu-visual-columnar" style="flex-direction:column">
+            <div class="edu-visual-title">Coba sendiri — ubah teks dan kata kunci!</div>
+            <div class="edu-caesar-controls">
+              <label class="edu-ctrl-label">Teks:</label>
+              <input type="text" id="colInput" value="ATTACK" maxlength="12" class="edu-ctrl-input" style="text-transform:uppercase;width:130px"/>
+              <label class="edu-ctrl-label">Kunci:</label>
+              <input type="text" id="colKey" value="KEY" maxlength="8" class="edu-ctrl-input" style="text-transform:uppercase;width:100px"/>
+              <button onclick="updateColumnar()" class="edu-ctrl-btn">Enkripsi!</button>
+            </div>
+            <div id="colDemo" style="margin-top:.75rem"></div>
+            <div class="edu-caesar-result" id="colResult" style="margin-top:.75rem"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7 — PERBANDINGAN -->
+    <section class="edu-section" id="perbandingan">
+      <div class="edu-section-num">07</div>
+      <h2 class="edu-section-title">Perbandingan Ketiga Algoritma</h2>
+      <div class="edu-section-body">
+        <div class="edu-compare-table">
+          <div class="edu-compare-head"><div></div><div>Caesar</div><div>Vigenere</div><div>Columnar</div></div>
+          <div class="edu-compare-row"><div class="edu-compare-label">Jenis</div><div>Substitusi</div><div>Substitusi</div><div>Transposisi</div></div>
+          <div class="edu-compare-row"><div class="edu-compare-label">Huruf Diubah?</div><div class="edu-yes">Ya</div><div class="edu-yes">Ya</div><div class="edu-no">Tidak</div></div>
+          <div class="edu-compare-row"><div class="edu-compare-label">Jenis Kunci</div><div>Angka (1-25)</div><div>Kata</div><div>Kata</div></div>
+          <div class="edu-compare-row"><div class="edu-compare-label">Tingkat Kesulitan</div><div>Mudah</div><div>Menengah</div><div>Menengah</div></div>
+          <div class="edu-compare-row"><div class="edu-compare-label">Tingkat Keamanan</div><div>Rendah</div><div>Sedang</div><div>Sedang</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 8 — QUIZ -->
+    <section class="edu-section" id="quiz">
+      <div class="edu-section-num">08</div>
+      <h2 class="edu-section-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg> Quiz — Uji Pemahamanmu!</h2>
+      <div class="edu-section-body">
+        <p>Sudah baca semua materinya? Sekarang uji pemahaman kamu dengan 5 soal berikut!</p>
+        <div class="quiz-wrap" id="quizWrap"></div>
+        <div class="quiz-result" id="quizResult" style="display:none">
+          <div class="quiz-score" id="quizScore"></div>
+          <div class="quiz-msg" id="quizMsg"></div>
+          <div class="quiz-result-btns">
+            <button class="quiz-retry-btn" onclick="initQuiz()">Coba Lagi</button>
+            <button class="quiz-new-btn" id="quizNewBtn" onclick="gantiPertanyaan()">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+              Ganti Pertanyaan
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA BAWAH -->
+    <div class="edu-cta-bottom">
+      <p>Sudah paham? Sekarang saatnya mencoba langsung!</p>
+      <div class="edu-cta-btns">
+        <a href="/encrypt" class="edu-cta-btn-green">
+          <svg class="btn-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Coba Enkripsi
+        </a>
+        <a href="/decrypt" class="edu-cta-btn-cyan">
+          <svg class="btn-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>
+          Coba Dekripsi
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/edukasi.js') }}"></script>
+{% endblock %}

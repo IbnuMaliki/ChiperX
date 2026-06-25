@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}CipherX — Cryptography Suite{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/edukasi.css') }}">
+</head>
+<body>
+  <canvas id="matrix-bg"></canvas>
+
+  <header class="site-header">
+    <a href="/" class="logo">
+      <span class="logo-bracket">[</span>
+      <span class="logo-text">CIPHER<span class="logo-accent">X</span></span>
+      <span class="logo-bracket">]</span>
+    </a>
+    <nav class="nav-links">
+      <a href="/" class="nav-link {% if request.path == '/' %}active{% endif %}">HOME</a>
+      <a href="/tentang-kriptografi" class="nav-link {% if request.path == '/tentang-kriptografi' %}active{% endif %}">TENTANG KRIPTOGRAFI</a>
+      <a href="/encrypt" class="nav-link {% if request.path == '/encrypt' %}active{% endif %}">ENKRIPSI</a>
+      <a href="/decrypt" class="nav-link {% if request.path == '/decrypt' %}active{% endif %}">DEKRIPSI</a>
+    </nav>
+    <div class="header-status">
+      <span class="status-dot"></span>
+      <span class="status-text">SECURE CONNECTION</span>
+    </div>
+  </header>
+
+  <main class="main-content">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-line"></div>
+    <p>
+      <span class="footer-label">SYS:</span> CipherX Cryptography Suite
+      <span class="footer-sep">|</span>
+      <span class="footer-label">VER:</span> 1.0.0
+      <span class="footer-sep">|</span>
+      <span class="footer-label">STATUS:</span> <span class="online">ONLINE</span>
+    </p>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/matrix.js') }}"></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>
