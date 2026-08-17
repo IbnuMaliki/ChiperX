@@ -6,7 +6,6 @@ Website enkripsi & dekripsi berbasis algoritma kriptografi klasik.
 - Caesar Cipher
 - Vigenère Cipher
 - Columnar Transposition Cipher
-- Rail Fence Cipher
 
 ## Cara Jalankan Lokal
 
@@ -16,7 +15,3 @@ python app.py
 ```
 
 Buka: http://localhost:5000
-
-## Deploy ke Render (Gratis)
-
-Lihat panduan lengkap di bawah.
